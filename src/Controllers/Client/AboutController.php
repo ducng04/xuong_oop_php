@@ -6,5 +6,4 @@ use Ngogi\Xuongphp\Commons\Controlller;
 class AboutController extends Controlller
 {
     
-    
 }

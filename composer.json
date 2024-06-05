@@ -3,7 +3,10 @@
     "autoload": {
         "psr-4": {
             "Ngogi\\Xuongphp\\": "src/"
-        }
+        },
+        "files": [
+            "helper.php"
+        ]
     },
     "authors": [
         {
