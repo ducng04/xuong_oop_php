@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +16,16 @@
 <body>
     <h1>Danh sach user</h1>
 
+    <a class="btn btn-primary " href="{{ url('admin/users/create') }}" >Thêm</a>
+
+    @if (!empty($_SESSION['status']) && $_SESSION['status'])
+            <div class="alert alert-success">
+                {{ $_SESSION['message'] }}
+                @php
+                    unset($_SESSION['status']);
+                @endphp
+            </div>
+    @endif
 
     <table class="table">
         <thead>
@@ -34,15 +43,17 @@
             @foreach ($users as $user)
             <tr>
                 <td><?= $user['id'] ?></td>
-                <td></td>
+                <td>
+                    <img src="{{ asset($user['avatar']) }}" alt="" width="100">
+                </td>
                 <td><?= $user['name'] ?></td>
                 <td><?= $user['email'] ?></td>
                 <td><?= $user['created_at'] ?></td>
                 <td><?= $user['update_at'] ?></td>
                 <td>
-                    <form action="{{ url('admin/users/' . $user['id'] . '/delete') }} " method="post">
-                        <button onclick="return confirm('Are you sure ?')" type="submit" >Delete</button>
-                    </form>
+                <a class="btn btn-info " href="{{ url('admin/users/' . $user['id'] . '/show') }}" >Xem</a>
+
+                    <a class="btn btn-danger" href="{{ url('admin/users/' . $user['id'] . '/delete') }}" onclick="return confirm('Chắc chắn xóa không?')">Xóa</a>
                 </td>
             </tr>
             @endforeach
