@@ -12,9 +12,13 @@
 //         GET    -> USER/ID/DELETE     ->DELETE($id)    -> XÓA BẢN GHI TRONG DB
 
 
+
+use Ngogi\Xuongphp\Controllers\Admin\DashboardController;
 use Ngogi\Xuongphp\Controllers\Admin\UserController;
 
 $router->mount('/admin', function () use ($router) {
+
+    $router->get('/', DashboardController::class . '@dashboard');
 
     //CRUD USER 
     $router->mount('/users', function () use ($router) {
@@ -23,7 +27,7 @@ $router->mount('/admin', function () use ($router) {
         $router->post('/store',         UserController::class . '@store');
         $router->get('/{$id}/show',     UserController::class . '@show');
         $router->get('/{$id}/edit',     UserController::class . '@edit');
-        $router->put('/{$id}/update',          UserController::class . '@update');
+        $router->post('/{$id}/update',          UserController::class . '@update');
         $router->get('/{$id}/delete',   UserController::class . '@delete');
     });
 });
