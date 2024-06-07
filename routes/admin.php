@@ -16,6 +16,15 @@
 use Ngogi\Xuongphp\Controllers\Admin\DashboardController;
 use Ngogi\Xuongphp\Controllers\Admin\UserController;
 
+$router->before('GET|POST', '/admin/*.*', function() {
+    if (!isset($_SESSION['user'])) {
+        header('location: '.url('login'));
+        exit();
+    }
+});
+
+
+
 $router->mount('/admin', function () use ($router) {
 
     $router->get('/', DashboardController::class . '@dashboard');

@@ -16,3 +16,13 @@ if(!function_exists('url')) {
 
     }
 }
+
+if(!function_exists('auth_check')) {
+    function auth_check() {
+        if(isset($_SESSION['user'])){
+            header('Location: '. url('admin/'));
+            exit;
+        }
+
+    }
+}

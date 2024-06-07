@@ -18,7 +18,10 @@
 use Ngogi\Xuongphp\Controllers\Client\AboutController;
 use Ngogi\Xuongphp\Controllers\Client\ContactController;
 use Ngogi\Xuongphp\Controllers\Client\HomeController;
+use Ngogi\Xuongphp\Controllers\Client\LoginController;
 use Ngogi\Xuongphp\Controllers\Client\ProductController;
+
+
 
 $router->get('/',               HomeController::class      . '@index');
 $router->get('/about',          AboutController::class      . '@index');
@@ -28,3 +31,9 @@ $router->get('/contact/store',  ContactController::class . '@store');
    
 $router->get('/products',       ProductController::class . '@index');
 $router->get('/products/{id}',  ProductController::class . '@detail');
+
+
+
+$router->get('/login',        LoginController::class . '@showFormLogin');
+$router->post('/handle-login',  LoginController::class . '@login'); 
+$router->get('/logout',  LoginController::class . '@logout'); 
