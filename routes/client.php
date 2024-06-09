@@ -16,6 +16,7 @@
 //HTTP Method : get , post , put , path , delete , option , head 
 
 use Ngogi\Xuongphp\Controllers\Client\AboutController;
+use Ngogi\Xuongphp\Controllers\Client\CartController;
 use Ngogi\Xuongphp\Controllers\Client\ContactController;
 use Ngogi\Xuongphp\Controllers\Client\HomeController;
 use Ngogi\Xuongphp\Controllers\Client\LoginController;
@@ -37,3 +38,9 @@ $router->get('/products/{id}',  ProductController::class . '@detail');
 $router->get('/login',        LoginController::class . '@showFormLogin');
 $router->post('/handle-login',  LoginController::class . '@login'); 
 $router->get('/logout',  LoginController::class . '@logout'); 
+
+
+$router->get('/cart/add', CartController::class . '@add');
+$router->get('/cart/quantityInc', CartController::class . '@add');
+$router->get('/cart/quantityDec', CartController::class . '@add');
+$router->get('/cart/remove', CartController::class . '@remove');

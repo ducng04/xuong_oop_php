@@ -23,7 +23,7 @@
             
             
             <li class>
-                <a href="Board.html" aria-expanded="false">
+                <a href="{{ url('admin/users') }}" aria-expanded="false">
                     <div class="icon_menu">
                         <img src=" {{ asset('assets/admin/img/menu-icon/5.svg ') }}" alt>
                     </div>

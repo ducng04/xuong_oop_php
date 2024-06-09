@@ -29,22 +29,35 @@
         </div>
 
         <div class="row">
-            @foreach ($products as $product )
+            @if (!empty($_SESSION['cart']))
             <div class="col-md-4 mb-2 mt-2">
-                <div class="card">
-                    <a href="{{ url('/products/' . $product['id']) }}">
-                        <img class="card-img-top " style="max-height: 200px;max-width: 600px;" src="{{ asset($product['img_thumbnail'])  }}" alt="Card image">
-                    </a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="{{ url('/products/' . $product['id']) }}">{{ $product['name'] }}</a>
-                        </h4>
-
-                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>
-                    </div>
-                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Tên sản phẩm</th>
+                            <th>Ảnh</th>
+                            <th>Số lượng</th>
+                            <th>Giá tiền</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($_SESSION['cart'] as $item )
+                            <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>john@example.com</td>
+                            </tr>
+                        @endforeach
+                            
+                        
+                    </tbody>
+                </table>
             </div>
-            @endforeach
+            @endif
+
+
+
         </div>
     </div>
 </body>
