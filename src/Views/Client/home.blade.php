@@ -28,25 +28,69 @@
 
         </div>
 
-        <div class="row">
-            @foreach ($products as $product )
-            <div class="col-md-4 mb-2 mt-2">
+        <div class="row" id="product-list">
+            @foreach ($products as $product)
+            <div class="col-md-4 mb-2 mt-2  product-item">
                 <div class="card">
                     <a href="{{ url('/products/' . $product['id']) }}">
-                        <img class="card-img-top " style="max-height: 200px;max-width: 600px;" src="{{ asset($product['img_thumbnail'])  }}" alt="Card image">
+                        <img class="card-img-top" style="max-height: 400px; max-width: 500px;" src="{{ asset($product['img_thumbnail']) }}" alt="Card image">
                     </a>
                     <div class="card-body">
                         <h4 class="card-title">
                             <a href="{{ url('/products/' . $product['id']) }}">{{ $product['name'] }}</a>
                         </h4>
-
-                        <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>
+                        <a href="{{ url('cart/add') }}?quantity=1&productID={{ $product['id'] }}" class="btn btn-primary">Thêm vào giỏ hàng</a>
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
+
+        <div class="pagination-container">
+            <nav aria-label="Page navigation">
+                <ul class="pagination" id="pagination"></ul>
+            </nav>
+        </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const rowsPerPage = 9;
+            const items = document.querySelectorAll(".product-item");
+            const pagination = document.getElementById("pagination");
+            const pageCount = Math.ceil(items.length / rowsPerPage);
+
+            function displayPage(page) {
+                for (let i = 0; i < items.length; i++) {
+                    items[i].style.display = (i >= (page - 1) * rowsPerPage && i < page * rowsPerPage) ? "block" : "none";
+                }
+            }
+
+            function createPagination() {
+                pagination.innerHTML = "";
+                for (let i = 1; i <= pageCount; i++) {
+                    const li = document.createElement("li");
+                    li.className = "page-item";
+                    const a = document.createElement("a");
+                    a.className = "page-link";
+                    a.href = "#";
+                    a.innerText = i;
+                    a.addEventListener("click", function(e) {
+                        e.preventDefault();
+                        displayPage(i);
+                        document.querySelector(".pagination .active")?.classList.remove("active");
+                        li.classList.add("active");
+                    });
+                    li.appendChild(a);
+                    pagination.appendChild(li);
+                }
+                pagination.firstChild.classList.add("active");
+            }
+
+            createPagination();
+            displayPage(1);
+        });
+    </script>
 </body>
 
 </html>

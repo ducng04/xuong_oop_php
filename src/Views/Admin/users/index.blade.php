@@ -51,7 +51,7 @@ Danh sach user
                                 <td><?= $user['name'] ?></td>
                                 <td><?= $user['email'] ?></td>
                                 <td><?= $user['created_at'] ?></td>
-                                <td><?= $user['update_at'] ?></td>
+                                <td><?= $user['updated_at'] ?></td>
                                 <td>
                                     <a class="btn btn-info " href="{{ url('admin/users/' . $user['id'] . '/show') }}">Xem</a>
                                     <a class="btn btn-warning " href="{{ url('admin/users/' . $user['id'] . '/edit') }}">Sửa</a>
@@ -69,6 +69,5 @@ Danh sach user
 
 </div>
 
-
-
 @endsection
+
