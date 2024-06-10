@@ -31,8 +31,15 @@ class CartController extends Controlller
         // Khởi tạo SESSION cart
         // Check n đang đang đăng nhập hay không
         $key = 'cart';
-        if (isset($_SESSION['user'])) {
+        // if (isset($_SESSION['user'])) {
+        //     $key .= '-' . $_SESSION['user']['id'];
+        // }
+
+        if (isset($_SESSION['user']) && isset($_SESSION['user']['id'])) {
             $key .= '-' . $_SESSION['user']['id'];
+        } else {
+            header('Location: '. url('login'));
+            exit(); 
         }
 
         if (!isset($_SESSION[$key][$product['id']])) {

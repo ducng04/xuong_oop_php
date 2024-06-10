@@ -25,9 +25,18 @@
             <li class>
                 <a href="{{ url('admin/users') }}" aria-expanded="false">
                     <div class="icon_menu">
+                        <img src=" {{ asset('assets/admin/img/menu-icon/6.svg ') }}" alt>
+                    </div>
+                    <span>Users</span>
+                </a>
+            </li>
+
+            <li class>
+                <a href="{{ url('admin/categories') }}" aria-expanded="false">
+                    <div class="icon_menu">
                         <img src=" {{ asset('assets/admin/img/menu-icon/5.svg ') }}" alt>
                     </div>
-                    <span>Board</span>
+                    <span>Categories</span>
                 </a>
             </li>
             

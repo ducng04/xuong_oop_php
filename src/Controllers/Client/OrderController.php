@@ -83,7 +83,7 @@ class OrderController extends Controlller
             unset($_SESSION['cart_id']);
         }
 
-
+        $_SESSION['complete']= "Đặt hàng thành công";
         header('Location: ' . url());
         exit;
     }

@@ -18,10 +18,21 @@
             <nav>
                 @if (!isset($_SESSION['user']))
                 <a class="btn btn-primary" href="{{ url('login') }}">Login</a>
+                
+
                 @endif
 
                 @if (isset($_SESSION['user']))
                 <a class="btn btn-primary" href="{{ url('logout') }}">Logout</a>
+                @endif
+
+                @if (!empty($_SESSION['complete']))
+                <div class="alert alert-success">
+                    {{ $_SESSION['complete'] }}
+                </div>
+                @php
+                unset($_SESSION['complete']);
+                @endphp
                 @endif
 
             </nav>
@@ -39,6 +50,7 @@
                         <h4 class="card-title">
                             <a href="{{ url('/products/' . $product['id']) }}">{{ $product['name'] }}</a>
                         </h4>
+                        
                         <a href="{{ url('cart/add') }}?quantity=1&productID={{ $product['id'] }}" class="btn btn-primary">Thêm vào giỏ hàng</a>
                     </div>
                 </div>
