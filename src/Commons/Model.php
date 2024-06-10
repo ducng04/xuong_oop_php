@@ -62,7 +62,7 @@ class Model
         ->fetchOne();
     }
 
-    public function paginate($page = 1, $perPage = 5)
+    public function paginate($page = 1, $perPage = 10)
     {
         $queryBuilder = clone($this->queryBuilder);
 

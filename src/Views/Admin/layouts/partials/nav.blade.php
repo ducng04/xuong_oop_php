@@ -39,6 +39,15 @@
                     <span>Categories</span>
                 </a>
             </li>
+
+            <li class>
+                <a href="{{ url('admin/products') }}" aria-expanded="false">
+                    <div class="icon_menu">
+                        <img src=" {{ asset('assets/admin/img/menu-icon/8.svg ') }}" alt>
+                    </div>
+                    <span>Products</span>
+                </a>
+            </li>
             
             
             

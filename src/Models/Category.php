@@ -8,12 +8,7 @@ class Category extends Model
 {
     protected string $tableName = 'categories';
 
-    /**
-     * Tìm kiếm danh mục theo tên.
-     *
-     * @param string $name Tên của danh mục cần tìm kiếm.
-     * @return array|null Một mảng kết hợp chứa thông tin của danh mục nếu tìm thấy, hoặc null nếu không tìm thấy.
-     */
+    
     public function findByName(string $name): ?array
     {
         return $this->queryBuilder
@@ -23,4 +18,6 @@ class Category extends Model
             ->setParameter(0, $name)
             ->fetchAssociative();
     }
+
+    
 }
